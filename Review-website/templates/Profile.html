@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+
+    {% if user_info %}
+        <h1>{{username}}</h1>
+        <h1>There is profile</h1>
+
+        <div class="user_info"><h3>{{username}} </h3><p>{{user_info.joindate}}</p></div>
+
+
+
+
+    {% else %}
+        <h3>no profile</h3>
+        <h3>{{ error }}</h3>
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+    <h1>{{username}}</h1>
+
+    <h1>Reviews</h1>
+
+    {% if review_info %}
+        
+        <div class="review_info"><h3>{{review_info.username}} </h3><p>{{review_info.review}}</p></div>
+
+        <div class="movies"><form action="/Profile" method="post"><input type="hidden" name="username" value="{{review_info.username}}"><button type="submit">{{review_info.username}}</button></form></div>
+
+
+
+    {% else %}
+        <h3>no review</h3>
+        <h3>{{ error }}</h3>
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

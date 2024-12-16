@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+    <h1>Register</h1>
+
+
+    <form action="/Register" method="POST" name ="register" id="register">  <!-- Action points to the /login route in Flask -->
+        <span><p>Username:</p></span>
+        <input type="text" id="username" name="username" placeholder="Username"> <br>  <!-- Added name="username" -->
+        <span><p>Password:</p></span>
+        <input type="text" id="password" name="password" placeholder="Password"> <br>  <!-- Added name="password" -->
+        <br>
+        <button type="submit" id="submit">Register</button>  
+    </form>  
+
+    <a href="/Login"> <button>Already have an account? Log in here!</button></a>
+
+    <p>{{Success}} {{error}}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
