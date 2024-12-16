@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+
+        body {
+            font-family: 'Fragment Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .banner {
+            background-color: #910C0C;
+            color: white;
+            width: 100%;
+            height: 100px; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            transition: top 0.3s; 
+            z-index: 3; 
+        }
+
+        .banner button {
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Fragment Mono', monospace;
+            font-size: 30px;
+            flex-shrink: 0;
+            font-weight: normal;
+        }
+
+        .banner .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            max-width: 50%; 
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+
+        .banner input[type="text"] {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            border-radius: 10px;
+            margin-right: 20px;
+            font-family: 'Fragment Mono', monospace;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .banner .filter-btn {
+            padding: 10px;
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            margin-top: 8.33vh;
+        }
+
+        .content {
+            width: 75%;
+            padding: 20px;
+            margin: 20px 40px
+        }
+
+        h1 {
+            color: #808080;
+            font-weight: normal;
+        }
+
+        .carousel-container {
+            width: 60vw; /* Take up 60% of the screen width */
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .carousel {
+            display: flex;
+            width: 500%;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            width: 20%; /* Since we have 5 images */
+            flex-shrink: 0;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 400px; /* Adjust the height as necessary */
+            object-fit: cover;
+        }
+        
+        /* Navigation buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            font-size: 2rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transform: translateY(-50%);
+        }
+        
+        .left-btn {
+            left: 10px;
+        }
+        
+        .right-btn {
+            right: 10px;
+        }
+        
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        /* The spotlight text */
+        #Spotlight {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #Spotlight span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        #Spotlight br {
+            margin-bottom: 10px;
+        }
+
+        .trending-carousel-container {
+            width: 60vw;
+            height: 400px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trending-carousel {
+            display: flex;   
+            justify-content: space-between;     
+            align-items: center;         
+            height: 400px;            
+            transition: transform 0.5s ease;
+        }
+
+        .trending-carousel-item {
+            flex: 0 0 20%; 
+            display: flex;
+            width: 20%; 
+            flex-shrink: 0;
+            justify-content: center;
+            align-items: center; 
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .trending-carousel-item img {
+            width: 200px;
+            height: 300px; 
+            object-fit: cover;
+            border-radius: 12px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .trending-carousel-item img:hover  {
+            transform: scale(1.05); 
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); 
+        }
+
+        .trending-carousel-btn {
+            position: absolute;
+            top: 50%;
+            font-size: 2rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transform: translateY(-50%);
+        }
+
+        .left-btn-trending {
+            left: 10px;
+        }
+
+        .right-btn-trending {
+            right: 10px;
+        }
+
+        .trending-carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Reviews Section */
+        .reviews {
+            margin: 20px 0;
+            width: 59.1vw; 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 50px; 
+            justify-content: center;
+        }
+
+        .review {
+            background-color: #ffffff; 
+            padding: 15px;
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px #0000001A; 
+            border: 1px solid #ddd; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            width: 100%;
+        }
+
+        .review:hover {
+            transform: scale(1.03); /* Slightly enlarge the box on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+        }
+
+        /* Review Content */
+        .review p {
+            margin: 5px 0;
+            font-size: 16px; /* Adjust text size */
+        }
+
+        .review p:first-child {
+            font-weight: bold; /* Bold Movie title */
+        }
+
+        .review p:nth-child(3) {
+            font-style: italic; /* Italic style for the review text */
+        }
+
+        .review p:last-child {
+            color: #999; /* Lighter color for the "likes" or time ago */
+        }
+
+        a {
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Banner Section --> 
+    <div class="banner">
+        <button>MovieReviews</button>
+        <div class="search-container">
+            <input type="text" placeholder="Search titles...">
+            <button class="filter-btn">Filters</button>
+        </div>
+        <button>Profile</button>
+    </div>
+
+    <div class="container">
+    <!-- Content -->
+    <div class="content">
+
+        <!-- Spotlight  -->
+        <div id="Spotlight" class="carousel-container">
+            <div class="carousel">
+
+                <div class="carousel-item">
+                    <a href="1.html">
+                        <img src="https://via.placeholder.com/800x400.png?text=Movie+1" alt="Movie 1">
+                    </a>
+                </div>
+        
+                <div class="carousel-item">
+                    <a href="1.html">
+                        <img src="https://via.placeholder.com/800x400.png?text=Movie+2" alt="Movie 2">   
+                    </a>     
+                </div>
+        
+                <div class="carousel-item">
+                    <a href="1.html">
+                        <img src="https://via.placeholder.com/800x400.png?text=Movie+3" alt="Movie 3">
+                        </a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="1.html">
+                        <img src="https://via.placeholder.com/800x400.png?text=Movie+4" alt="Movie 4">
+                    </a>
+                </div>
+
+                <div class="carousel-item">
+                    <a href="1.html">
+                        <img src="https://via.placeholder.com/800x400.png?text=Movie+5" alt="Movie 5">
+                    </a>
+                </div>
+
+            </div>
+
+            <button class="carousel-btn left-btn" onclick="prevSlide()">❮</button>
+            <button class="carousel-btn right-btn" onclick="nextSlide()">❯</button>
+        
+        </div>
+
+        <br>
+
+        <!-- Trending -->
+        <h1>Trending</h1>
+        <div class="trending-carousel-container">
+            <div class="trending-carousel">
+
+                <div class="trending-carousel-item">
+                    <a href="endgame.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+1" alt="Endgame">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="the-day-after-tomorrow.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+2" alt="The Day After Tomorrow">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="the-dark-knight.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+3" alt="The Dark Knight">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="inception.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+4" alt="Inception">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="the-matrix.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+5" alt="The Matrix">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="movie-6.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+6" alt="Movie 6">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="movie-7.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+7" alt="Movie 7">
+                    </a>
+                </div>
+            
+                <div class="trending-carousel-item">
+                    <a href="movie-8.html">
+                            <img src="https://via.placeholder.com/800x400.png?text=Movie+8" alt="Movie 8">
+                    </a>
+                </div>
+            
+            </div>
+
+            <button class="trending-carousel-btn left-btn-trending" onclick="prevTrendingSlide()">❮</button>
+            <button class="trending-carousel-btn right-btn-trending" onclick="nextTrendingSlide()">❯</button>
+
+        </div>
+
+        <!-- Reviews -->
+        <h1>Reviews</h1>
+        <div class="reviews">
+            <div class="review">
+                <p>Movie: Endgame</p>
+                <br>
+                <p>ass</p>
+                <br>
+                <p>Time ago: 2 days ago</p>
+                <p>Likes: 100</p>
+            </div>
+
+            <div class="review">
+                <p>Movie: Inception</p>
+                <br>
+                <p>Mind-bending!</p>
+                <br>
+                <p>Time ago: 1 week ago</p>
+                <p>Likes: 50</p>
+            </div>
+
+            <div class="review">
+                <p>Movie: The Dark Knight</p>
+                <br>
+                <p>Best superhero movie ever.</p>
+                <br>
+                <p>Time ago: 3 weeks ago</p>
+                <p>Likes: 200</p>
+            </div>
+        </div>
+    </div>
+
+        <br>
+
+        
+    </div>
+
+    <script>
+
+        // Carousel
+        let currentMovie = 0; 
+        const itemsPerPage = 5;
+        const totalItems = 8;
+
+        const carousel = document.querySelector('.carousel');
+
+        function updateCarousel() {
+            const offset = -20 * currentMovie; 
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            if (currentMovie < totalItems - itemsPerPage) {
+                currentMovie++; // Move to the next item
+            } 
+            else {
+                currentMovie = 0; // Reset to the first item when we reach the last
+            }
+            updateCarousel();
+            resetAutoScroll();
+        }
+        function prevSlide() {
+            if (currentMovie > 0) {
+                currentMovie--; // Move to the previous item
+            } 
+            else {
+                currentMovie = totalItems - itemsPerPage; // Reset to the last set of items
+            }
+            updateCarousel();
+            resetAutoScroll();
+        }
+
+        function startAutoScroll() {
+            autoScrollTimer = setInterval(nextSlide, 4000); 
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollTimer);
+            startAutoScroll(); 
+        }
+
+        updateCarousel();
+        startAutoScroll();
+
+        // Trending carousel
+        let trendingIndex = 0;
+        const totalTrendingItems = 5;
+        const trendingCarousel = document.querySelector('.trending-carousel');
+
+        function updateTrendingCarousel() {
+            const offset = -25 * trendingIndex; 
+            trendingCarousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextTrendingSlide() {
+            trendingIndex = (trendingIndex + 1) % totalTrendingItems; 
+            updateTrendingCarousel();
+        }
+
+        function prevTrendingSlide() {
+            trendingIndex = (trendingIndex - 1 + totalTrendingItems) % totalTrendingItems;
+            updateTrendingCarousel();
+        }
+
+    </script>
+
+</body>
+
+</html>
