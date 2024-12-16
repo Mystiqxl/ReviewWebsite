@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+<form action="/Filter" method="post">
+    <input type="checkbox" name="filter" value="action" 
+           {% if 'action' in selected_filters %} checked{% endif %}> action  
+    <input type="checkbox" name="filter" value="adventure" 
+           {% if 'adventure' in selected_filters %}checked{% endif %}> adventure  
+    <input type="checkbox" name="filter" value="animation" 
+           {% if 'animation' in selected_filters %}checked{% endif %}> animation  
+    <input type="checkbox" name="filter" value="biography" 
+           {% if 'biography' in selected_filters %}checked{% endif %}> biography  
+    <input type="checkbox" name="filter" value="comedy" 
+           {% if 'comedy' in selected_filters %}checked{% endif %}> comedy  
+    <input type="checkbox" name="filter" value="crime" 
+           {% if 'crime' in selected_filters %}checked{% endif %}> crime  
+    <input type="checkbox" name="filter" value="drama" 
+           {% if 'drama' in selected_filters %}checked{% endif %}> drama  
+    <input type="checkbox" name="filter" value="family" 
+           {% if 'family' in selected_filters %}checked{% endif %}> family  
+    <input type="checkbox" name="filter" value="fantasy" 
+           {% if 'fantasy' in selected_filters %}checked{% endif %}> fantasy  
+    <input type="checkbox" name="filter" value="film-noir" 
+           {% if 'film-noir' in selected_filters %}checked{% endif %}> film-noir  
+    <input type="checkbox" name="filter" value="history" 
+           {% if 'history' in selected_filters %}checked{% endif %}> history  
+    <input type="checkbox" name="filter" value="horror" 
+           {% if 'horror' in selected_filters %}checked{% endif %}> horror  
+    <input type="checkbox" name="filter" value="music" 
+           {% if 'music' in selected_filters %}checked{% endif %}> music  
+    <input type="checkbox" name="filter" value="mystery" 
+           {% if 'mystery' in selected_filters %}checked{% endif %}> mystery  
+    <input type="checkbox" name="filter" value="romance" 
+           {% if 'romance' in selected_filters %}checked{% endif %}> romance  
+    <input type="checkbox" name="filter" value="sci-fi" 
+           {% if 'sci-fi' in selected_filters %}checked{% endif %}> sci-fi  
+    <input type="checkbox" name="filter" value="thriller" 
+           {% if 'thriller' in selected_filters %}checked{% endif %}> thriller  
+    <input type="checkbox" name="filter" value="war" 
+           {% if 'war' in selected_filters %}checked{% endif %}> war  
+    <input type="checkbox" name="filter" value="western" 
+           {% if 'western' in selected_filters %}checked{% endif %}> western
+
+    <br>
+    <button type="submit">Filter</button>
+</form>
+
+
+
+
+
+
+    <h1>Results</h1>
+
+    {% if results %}
+
+        {% for result in results %}
+
+            <div class="movieresults"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="{{result.moviename}}"><button type="submit" style="border: none; background: none; padding: 0px; ">
+
+                <img src="{{url_for('static', filename='images/' + result.movielink)}}" alt="{{result.moviename}}" style="cursor:pointer;"> 
+
+                <div class="movieinfo">
+                    <h1>{{result.moviename}}</h1>
+                </div>
+
+            </button></form></div>   
+            <br>
+        
+
+        {% endfor %}
+
+    {% else %}
+        <h3>{{ error }}</h3>
+
+    {% endif %}
+
+
+{% endblock %}
