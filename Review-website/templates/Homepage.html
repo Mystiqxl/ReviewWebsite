@@ -1,0 +1,118 @@
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+
+
+<div id="Spotlight"><span style="font-size: 20px;"> #1 Spotlight </span> <br>
+Movie name 
+</div>
+
+<br>
+
+<h1>{{username}}</h1>
+<h2> Trending </h2>
+<div class="movielist">
+  
+    
+    <div class="movies"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="Endgame"><button type="submit" style="border: none; background: none; padding: 0px; ">
+        <img src="{{url_for('static', filename='images/Endgame.jpg')}}" alt="endgame" class="movies" style="cursor:pointer;">
+        </button></form> </a></div>    
+        
+    <div class="movies"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="The Day After Tomorrow"><button type="submit" style="border: none; background: none; padding: 0px; ">
+        <img src="{{url_for('static', filename='images/The-Day-After-Tomorrow.jpg')}}" alt="endgame" class="movies" style="cursor:pointer;">
+        </button></form> </a></div>    
+    
+    <div class="movies"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="The Dark Knight"><button type="submit" style="border: none; background: none; padding: 0px; ">
+        <img src="{{url_for('static', filename='images/The-Dark-Knight.jpg')}}" alt="endgame" class="movies" style="cursor:pointer;">
+        </button></form> </a></div>    
+    
+    <div class="movies"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="Inception"><button type="submit" style="border: none; background: none; padding: 0px; ">
+        <img src="{{url_for('static', filename='images/Inception.jpg')}}" alt="endgame" class="movies" style="cursor:pointer;">
+        </button></form> </a></div>    
+    
+    <div class="movies"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="The Matrix"><button type="submit" style="border: none; background: none; padding: 0px; ">
+        <img src="{{url_for('static', filename='images/The-Matrix.jpg')}}" alt="endgame" class="movies" style="cursor:pointer;">
+        </button></form> </a></div>    
+    
+
+    <a class="prev" onclick="plusSlides(-2)">❮</a>
+    <a class="next" onclick="plusSlides(2)">❯</a>
+</div>
+
+
+
+<br>
+<br>
+
+
+
+<h1>Reviews</h1>
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="reviews">
+                
+                <form action="/Review" method="post"><input type="hidden" name="review_id" value="{{review.review_id}}">
+                    <button type="submit" style="border: none; background: none; padding: 0px; ">
+                    <p>Movie: {{ review.moviename }}</p>
+                    <p>Review: {{ review.review }}</p>
+                    <p>Time ago: {{ review.time_ago }}</p>
+                    <p>Likes: {{ review.likes }}</p>   
+                    
+                    
+                    </button></form> 
+
+            </div>
+            
+
+        {% endfor %}
+    {% else %}
+        <h1>{{error}}</h1>
+    {% endif %}
+  
+<br>
+
+</p>
+</a>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+<footer> 
+<p> footer </p> 
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+

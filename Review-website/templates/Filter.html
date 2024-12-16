@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+
+    <form action="/Filter" method="post">
+        <input type="checkbox" name="filter" value="action">action
+        <input type="checkbox" name="filter" value="romance">romance
+        <input type="checkbox" name="filter" value="thriller">thriller
+        <input type="checkbox" name="filter" value="drama">drama
+
+        <br>
+        <button type="submit">Filter</button></form>
+
+
+
+
+    <h1>Results</h1>
+
+    {% if results %}
+
+        {% for result in results %}
+            <div class="review_info"><h3>{{result.moviename}} </h3><p>{{result.movielink}}</p></div>
+
+
+
+        {% endfor %}
+    {% else %}
+        <h3>no movies</h3>
+        <h3>{{ error }}</h3>
+    {% endif %}
+
+{% endblock %}
