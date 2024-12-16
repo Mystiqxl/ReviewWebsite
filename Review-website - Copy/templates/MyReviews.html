@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+<h1>Hello</h1>
+
+
+<h1>{{ username }}</h1>
+<h1>Reviews</h1>
+    {% if reviews %}
+        {% for review in reviews %}
+            <div class="reviews">
+                
+                <form action="/Review" method="post"><input type="hidden" name="review_id" value="{{review.review_id}}">
+                    <button type="submit" style="border: none; background: none; padding: 0px; ">
+                    <p>Movie: {{ review.moviename }}</p>
+                    <p>Review: {{ review.review }}</p>
+                    <p>Time ago: {{ review.time_ago }}</p>
+                    <p>Likes: {{ review.likes }}</p>   
+                    
+                    
+                    </button></form> 
+
+            </div>
+            
+
+        {% endfor %}
+    {% else %}
+        <h1>{{error}}</h1>
+    {% endif %}
+
+
+
+{% endblock %}
