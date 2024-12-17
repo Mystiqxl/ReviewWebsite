@@ -5,8 +5,8 @@
 3. Launch MySQL Workbench and click the + sign next to "MySQL Connections" to create a connection
 4. Set hostname to localhost, username to root and do not set password* 
 5. Click into the connection, opening a query.
-6. Click 'file' on the top left, followed by 'Run SQL script'
-7. Find the attached sql file, then run it 
+6. Click 'server' on the top menu, followed by 'Data Import'
+7. Select "Import from Self-Contained file", then attach the file, and import (in the "import progress" tab)
 8. This website runs on python, so you will need to install the latest version of python
 9. Upon installation, make sure to add pip as path
 10. Open up the Review-website folder in vscode, and type cd [full path name] in the terminal at the bottom (e.g. cd c:\\Users\\kc610\\Downloads\\Review-website)
