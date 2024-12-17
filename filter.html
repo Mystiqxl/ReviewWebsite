@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hongdua - Filter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+
+        body {
+            font-family: 'Fragment Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .banner {
+            background-color: #910C0C;
+            color: white;
+            width: 100%;
+            height: 8.33vh; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            transition: top 0.3s; 
+            z-index: 3; 
+        }
+
+        .banner button {
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Hanuman', monospace;
+            font-size: 25px;
+            flex-shrink: 0;
+            font-weight: normal;
+        }
+
+        .banner .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            max-width: 50%; 
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+
+        .banner input[type="text"] {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            border-radius: 10px;
+            margin-right: 20px;
+            font-family: 'Fragment Mono', monospace;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .banner .filter-btn {
+            padding: 10px;
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin-top: 10vh;
+        }
+
+        .sidebar {
+            width: 25%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-sizing: border-box;
+        }
+        
+        .border {
+            width: 5px;
+            margin: 1% 0;
+            background-color: #d9d9d9;
+            border-radius: 5px;
+        }
+
+        .sidebar h1 {
+            text-decoration: none;
+            color: #910C0C;
+            padding: 30px;
+            font-size: 35px;
+            font-weight: normal;
+            width: 100%;
+            text-align: left;
+        }
+
+        .content {
+            width: 80%;
+            padding: 5px;
+            margin: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: #f1f1f1;
+        }
+ 
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .movie-container {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: flex-start;
+            margin-left: 380px;
+            width: calc(100% - 420px);
+        }
+
+        .movie {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: row;
+            width: 402px;
+            box-sizing: border-box;
+            background-color: Gainsboro;
+        }
+
+        .movie img {
+            width: 110px;        
+            height: 150px; 
+            object-fit: cover;  
+            object-position: center;
+            margin-right: 20px
+        }
+
+        .movie .text {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+            
+        .movie h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+            
+        .movie p {
+            color: #555;
+        }
+        
+        .movie-container {
+            margin-bottom: 20px;
+            color: #808080;
+        }
+
+        .checkbox-container {
+            margin: 30px 100px;
+            margin-bottom: 20px;
+            font-size: 30px;
+            color: #808080;
+        }
+
+        .checkbox-container input {
+            position: relative;
+            margin: 10px 30px;
+        }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="banner">
+            <a href="home.html">
+                <button>MovieReviews</button>
+            </a>
+            <div class="search-container">
+                <input type="text" placeholder="Search titles...">
+                <button class="filter-btn">Filters</button>
+            </div>
+            <a href="account.html">
+                <button>Settings</button>
+            </a>
+        </div>
+
+        <div class="container">
+             
+            <div class="sidebar">
+
+                <h1>Genres</h1>
+
+                <div class="checkbox-container">
+                    <label for="action">
+                        <input type="checkbox" id="action" value="action"> Action
+                    </label><br>
+                    <label for="comedy">
+                        <input type="checkbox" id="comedy" value="comedy"> Comedy
+                    </label><br>
+                    <label for="drama">
+                        <input type="checkbox" id="drama" value="drama"> Drama
+                    </label><br>
+                    <label for="horror">
+                        <input type="checkbox" id="horror" value="horror"> Horror
+                    </label><br>
+                    <label for="adventure">
+                        <input type="checkbox" id="adventure" value="adventure"> Adventure
+                    </label><br>
+                    <label for="romance">
+                        <input type="checkbox" id="romance" value="romance"> Romance
+                    </label><br>
+                    <label for="sci-fi">
+                        <input type="checkbox" id="sci-fi" value="sci-fi"> Sci-Fi
+                    </label><br>
+                    <label for="thriller">
+                        <input type="checkbox" id="thriller" value="thriller"> Thriller
+                    </label><br>
+                    <label for="animation">
+                        <input type="checkbox" id="animation" value="animation"> Animation
+                    </label><br>
+                    <label for="animation">
+                        <input type="checkbox" id="crime" value="crime"> Crime
+                    </label><br>
+                </div>
+            </div>
+
+            <div class="border"></div class="border">
+
+
+            <div class="content">
+
+                <div class="movie-container" id="movieContainer">
+
+                    <div class="movie" data-genre="action,adventure">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/f0535dd61f56bddd6ee7f3bfb765645e45d78f373418ae37ee5103cf6eebbff0.jpg">
+                        <h3>Avatar: The Way of Water</h3>
+                        <p>Genre: Action, Adventure</p>
+                    </div>
+                
+                    <div class="movie" data-genre="action,sci-fi">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/ae8093e4439b66320d3cc1f1fb96fa414530202ee4b21cc00a08d6b66de541d6.jpg">
+                        <h3>Avengers: Endgame</h3>
+                        <p>Genre: Action, Sci-Fi</p>
+                    </div>
+                
+                    <div class="movie" data-genre="drama,comedy">
+                        <img src="https://m.media-amazon.com/images/I/91++WV6FP4L._AC_SY741_.jpg">
+                        <h3>Forrest Gump</h3>
+                        <p>Genre: Drama, Comedy</p>
+                    </div>
+                
+                    <div class="movie" data-genre="drama,romance">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/660b8ffa60bb733ac8753397e0056f608c1c4c0a75ec5d5af9491e94b924624e.jpg">
+                        <h3>The Notebook</h3>
+                        <p>Genre: Drama, Romance</p>
+                    </div>
+                
+                    <div class="movie" data-genre="comedy,romance">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/f45c926d73c8773ab2d71c20cd468fa8b730460e84921189964075c3c32fe167.jpg">
+                        <h3>Crazy, Stupid, Love</h3>
+                        <p>Genre: Comedy, Romance</p>
+                    </div>
+                
+                    <div class="movie" data-genre="sci-fi,thriller">
+                        <img src="https://m.media-amazon.com/images/I/61CkZlbKdwL._AC_UF1000,1000_QL80_.jpg">
+                        <h3>Inception</h3>
+                        <p>Genre: Sci-Fi, Thriller</p>
+                    </div>
+                
+                    <div class="movie" data-genre="horror,thriller">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/7f199ee2a285620c61f2c38846994bff0cabc52bfa39b1bb313d0f58be7a3658.jpg">
+                        <h3>Get Out</h3>
+                        <p>Genre: Horror, Thriller</p>
+                    </div>
+                
+                    <div class="movie" data-genre="animation,adventure">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/3bee7714286b145b2c79cf0318d17b0bee2aaa342c688a10718286e53b24a599.jpg">
+                        <h3>Spider-Man: Across the Spider-Verse</h3>
+                        <p>Genre: Animation, Adventure</p>
+                    </div>
+                
+                    <div class="movie" data-genre="action,sci-fi">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/4a48991096eef46e47ecb17a0a677c46d7d7607aedaec7b67447645bee668816.jpg">
+                        <h3>Star Wars: Episode IV - A New Hope</h3>
+                        <p>Genre: Action, Sci-Fi</p>
+                    </div>
+                
+                    <div class="movie" data-genre="drama,crime">
+                        <img src="https://m.media-amazon.com/images/I/71b6IS-+mZL._AC_UF1000,1000_QL80_.jpg">
+                        <h3>The Godfather</h3>
+                        <p>Genre: Drama, Crime</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <script>
+        const checkboxs = document.querySelectorAll('.checkbox-container input');
+        const movieContainer = document.getElementById('movieContainer');
+        const movies = movieContainer.getElementsByClassName('movie');
+
+        function movieFilter() {
+            const selectGenres = [];
+            checkboxs.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectGenres.push(checkbox.value);
+                }
+            });
+
+            for (let i = 0; i < movies.length; i++) {
+                const movie = movies[i];
+                const movieGenres = movie.getAttribute('data-genre').split(',');
+                const matchGenres = selectGenres.every(genre => movieGenres.includes(genre));
+
+                if (selectGenres.length === 0 || matchGenres) {
+                    movie.style.display = 'inline-flex';
+                } else {
+                    movie.style.display = 'none';
+                }
+            }
+        }
+
+        checkboxs.forEach(checkbox => {
+            checkbox.addEventListener('change', movieFilter);
+        });
+    </script>
+   
+    </body>
+
+</html>
