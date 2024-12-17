@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hongdua - Register</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+
+        body {
+            font-family: 'Fragment Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .banner {
+            background-color: #910C0C;
+            color: white;
+            width: 100%;
+            height: 8.33vh; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            transition: top 0.3s; 
+            z-index: 3; 
+        }
+
+        .banner button {
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Hanuman', monospace;
+            font-size: 25px;
+            flex-shrink: 0;
+            font-weight: normal;
+        }
+
+        .banner .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            max-width: 50%; 
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+
+        .banner input[type="text"] {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            border-radius: 10px;
+            margin-right: 20px;
+            font-family: 'Fragment Mono', monospace;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .banner .filter-btn {
+            padding: 10px;
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin-top: 15vh;
+            justify-content: center;
+            align-items: flex-start;
+            box-sizing: border-box;
+        }
+
+        .form-container {
+            background-color: #efefef;
+            border-radius: 20px;
+            padding: 30px;
+            width: 400px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-container input {
+            padding: 12px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-family: 'Fragment Mono', monospace;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            padding: 12px 20px;
+            background-color: #910C0C;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Fragment Mono', monospace;
+            font-size: 16px;
+            display: block; 
+            margin-left: auto;  
+            margin-right: auto;
+        }
+
+        .form-container button:hover {
+            background-color: #7a0b0b;
+        }
+
+        .form-container a {
+            color: #910C0C;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .form-container p {
+            color: #910C0C;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="banner">
+        <a href="home.html">
+            <button>MovieReviews</button>
+        </a>
+        <div class="search-container">
+            <input type="text" placeholder="Search titles...">
+            <a href="filter.html">
+                <button class="filter-btn">Filters</button>
+         
+   </a>
+        </div>
+        <a href="account.html">
+            <button>Settings</button>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h1>Register</h1>
+
+            <form action="/Register" method="POST" name ="register" id="register">  <!-- Action points to the /login route in Flask -->
+                <span><p>Username:</p></span>
+                <input type="text" id="username" name="username" placeholder="Username"> <br>  <!-- Added name="username" -->
+                <span><p>Password:</p></span>
+                <input type="text" id="password" name="password" placeholder="Password"> <br>  <!-- Added name="password" -->
+                <br>
+                <button type="submit" id="submit">Register</button>  
+            </form>  
+            <br>
+
+            <a href="/Login">Already have an account? Log in here!</a>
+
+        </div>
+    </div>
+
+</body>
+</html>
