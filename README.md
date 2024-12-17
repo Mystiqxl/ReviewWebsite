@@ -1,7 +1,7 @@
 # How to run the website
 
 1. Download the "Review-website" folder and website.db file onto your device 
-2. Download MySQL by heading to [thislink] (https://dev.mysql.com/downloads/installer/) and downloading the second file (mysql-installer-community-8.0.40.0.msi)
+2. Download MySQL by heading to [this link](https://dev.mysql.com/downloads/installer/) and downloading the second file (mysql-installer-community-8.0.40.0.msi)
 3. Install MySQL Workbench, and launch it
 4. Click the + sign next to "MySQL Connections" to create a connection
 5. Set hostname to localhost, username to root and do not set password (reference step x if you have already set a password)
