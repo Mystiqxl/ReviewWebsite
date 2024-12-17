@@ -114,30 +114,18 @@
         }
 
         .sidebar form {
-            margin: 30px 100px;
+            margin: 0 100px;
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             font-size: 30px;
             color: #808080;
         }
 
         .sidebar input[type="checkbox"] {
             position: relative;
-            margin: 10px 30px;
-        }
-
-        form button {
-            margin-top: 10px;
-            padding: 8px 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #45a049;
+            margin: 0 30px;
         }
 
         .content {
@@ -236,34 +224,34 @@
 
                 <form action="/Filter" method="post">
                     <label for="action">
-                        <input type="checkbox" id="action" value="action"> Action
+                        <input type="checkbox" name="filter" value="action"> Action
                     </label><br>
                     <label for="comedy">
-                        <input type="checkbox" id="comedy" value="comedy"> Comedy
+                        <input type="checkbox" name="filter" value="comedy"> Comedy
                     </label><br>
                     <label for="drama">
-                        <input type="checkbox" id="drama" value="drama"> Drama
+                        <input type="checkbox" name="filter" value="drama"> Drama
                     </label><br>
                     <label for="horror">
-                        <input type="checkbox" id="horror" value="horror"> Horror
+                        <input type="checkbox" name="filter" value="horror"> Horror
                     </label><br>
                     <label for="adventure">
-                        <input type="checkbox" id="adventure" value="adventure"> Adventure
+                        <input type="checkbox" name="filter" value="adventure"> Adventure
                     </label><br>
                     <label for="romance">
-                        <input type="checkbox" id="romance" value="romance"> Romance
+                        <input type="checkbox" name="filter" value="romance"> Romance
                     </label><br>
                     <label for="sci-fi">
-                        <input type="checkbox" id="sci-fi" value="sci-fi"> Sci-Fi
+                        <input type="checkbox" name="filter" value="sci-fi"> Sci-Fi
                     </label><br>
                     <label for="thriller">
-                        <input type="checkbox" id="thriller" value="thriller"> Thriller
+                        <input type="checkbox" name="filter" value="thriller"> Thriller
                     </label><br>
                     <label for="animation">
-                        <input type="checkbox" id="animation" value="animation"> Animation
+                        <input type="checkbox" name="filter" value="animation"> Animation
                     </label><br>
                     <label for="animation">
-                        <input type="checkbox" id="crime" value="crime"> Crime
+                        <input type="checkbox" name="filter" value="crime"> Crime
                     </label><br>
                 </form>
                 
