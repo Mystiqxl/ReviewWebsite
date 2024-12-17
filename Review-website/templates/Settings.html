@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+
+
+
+    {% if username %}
+
+    <h1>{{username}}</h1>
+        <form action="/Settings" method="POST" name ="settings" id="settings" enctype="multipart/form-data">  <!-- Action points to the /login route in Flask -->
+            <span><p>Username:</p></span>
+            <input type="text" id="username" name="username" placeholder="Username"> <br>  <!-- Added name="username" -->
+            <span><p>Password:</p></span>
+            <input type="text" id="password" name="password" placeholder="Password"> <br>  <!-- Added name="password" -->
+            <span><p>Display Name:</p></span>
+            <input type="text" id="displayname" name="displayname" placeholder="Display Name"> <br>  <!-- Added name="username" -->
+            <span><p>PFP</p></span>
+            <label for="pfp">    <img src="{{ url_for('static', filename='uploads/' + user_info.pfp) }}" class="pfp">
+            </label><input type="file" id="pfp" name="pfp"><br>
+            <br>
+            <span><p>Email:</p></span>
+            <input type="text" id="email" name="email" placeholder="Email"> <br>  <!-- Added name="username" -->
+            <button type="submit" id="submit">Save settings</button>  
+        </form>  
+
+
+
+
+
+
+    {% else %}
+    <h3>no profile</h3>
+    <h3>{{ error }}</h3>
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

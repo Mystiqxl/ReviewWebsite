@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+<h1>Search results</h1>
+
+    {% if results %}
+
+        {% for result in results %}
+
+            <div class="movieresults"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="{{result.moviename}}"><button type="submit" style="border: none; background: none; padding: 0px; ">
+
+                <img src="{{url_for('static', filename='images/' + result.movielink)}}" alt="{{result.moviename}}" style="cursor:pointer;"> 
+
+                <div class="movieinfo">
+                    <h1>{{result.moviename}}</h1>
+                </div>
+
+            </button></form></div>   
+            <br>
+        
+
+        {% endfor %}
+
+    {% else %}
+        <h3>{{ error }}</h3>
+
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+        
+<div class="container"><img src="{{url_for('static', filename='images/' + movie.movielink)}}" class="movieicon"><div class="moviename"> {{movie.moviename}} </div> <div id="likebutton" >Like</div><br></div>     
+    
+
+
+<div class="releasedate">Release date: {{movie.releasedate}} </div><br>
+
+
+
+<div class="runtime">Movie duration: {{movie.runtime}} </div><br>
+
+
+
+
+<h1>Register</h1>
+
+
+<form action="/Movies" method="POST" name ="review" id="review"> 
+    <span><p>Rating:</p></span>
+    <input type="radio" id="rating1" name="rating" value="1">
+    <label for="rating1">1</label>
+
+    <input type="radio" id="rating2" name="rating" value="2">
+    <label for="rating2">2</label>
+
+    <input type="radio" id="rating3" name="rating" value="3">
+    <label for="rating3">3</label>
+
+    <input type="radio" id="rating4" name="rating" value="4">
+    <label for="rating4">4</label>
+
+    <input type="radio" id="rating5" name="rating" value="5">
+    <label for="rating5">5</label><br>
+
+    <span><p>Review:</p></span>
+
+    <input type="text" id="review" name="review" placeholder="review"> <br>
+    <input type="hidden" id="moviename" name="moviename" value="{{ movie.moviename}}">
+    <br>
+    <button type="submit" id="submit">Submit review</button>  
+</form>  
+
+
+<p>{{Success}} {{error}} </p>
+
+
+
+
+
+
+<h1>Reviews</h1>
+    <form action="/Movies" method="post">
+        <input type="hidden" name="moviename" value="{{movie.moviename}}">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort">
+        <option value="popular">Popular</option>
+        <option value="recent">Recent</option>
+        </select>
+        <button type="submit" id="submit">Sort</button>  
+
+    </form>
+
+    {% if reviews %}
+        {% for review in reviews %}
+            
+            
+
+            
+            <div class="reviews">
+                
+
+                <form action="/Review" method="post"><input type="hidden" name="review_id" value="{{review.review_id}}">                    
+                    <button type="submit" style="border: none; background: none; padding: 0px; ">
+                </form>
+                
+                <form action="/Review" method="post"><input type="hidden" name="review_id" value="{{review.review_id}}">
+                    <button type="submit" style="border: none; background: none; padding: 0px; ">
+                    <p>User: {{ review.username }}</p>
+                    <p>Rating: {{ review.rating }}</p>
+                    <p>Movie: {{ review.moviename }}</p>
+                    <p>Review: {{ review.review }}</p>
+                    <p>Time ago: {{ review.time_ago }}</p>
+                    <p>Likes: {{ review.likes }}</p>   
+                    
+                    
+                    </button></form> 
+
+            </div>
+            
+
+        {% endfor %}
+    {% else %}
+        <h1>{{error}}</h1>
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

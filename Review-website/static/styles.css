@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+
+* {
+    box-sizing: border-box;
+    } 
+    body {
+        font-family: 'Fragment Mono', monospace;
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        
+    }
+    
+    a{
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    
+   
+
+
+
+/* Spotlight */
+
+    #Spotlight {background-color: DodgerBlue; 
+        padding-top: 250px; 
+        padding-bottom: 50px; 
+        text-align: left; 
+        padding-left: 50px;
+        width: 100%;
+        font-size: 35px; 
+        color: white;
+        border-radius: 5px;
+    }
+    
+    .carousel-container {
+        width: 60vw; /* Take up 60% of the screen width */
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .carousel {
+        display: flex;
+        width: 500%;
+        transition: transform 0.5s ease;
+    }
+    
+    .carousel-item {
+        width: 20%; /* Since we have 5 images */
+        flex-shrink: 0;
+    }
+    
+    .carousel-item img {
+        width: 100%;
+        height: 400px; /* Adjust the height as necessary */
+        object-fit: cover;
+    }
+    
+    /* Navigation buttons */
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        font-size: 2rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        transform: translateY(-50%);
+    }
+    
+    .left-btn {
+        left: 10px;
+    }
+    
+    .right-btn {
+        right: 10px;
+    }
+    
+    .carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+
+/* Header */
+
+    .header {
+        background-color: #910C0C;
+            color: white;
+            width: 100%;
+            height: 5vw; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+    }
+
+    #Home {background-color: transparent;
+        color: #efefef;
+        border: none;
+        padding: .66vw;
+        cursor: pointer;
+        font-family: 'Fragment Mono', monospace;
+        font-size: 2vw;
+        flex-shrink: 0;
+        font-weight: normal;
+    }
+    
+    #Home:hover {background-color:rgb(24, 112, 201);
+    }
+
+    
+    #Input {
+        margin-left:1vw;
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 50vw;
+        font-size: 1.1vw;
+        padding: .8vw 1.3vw ;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+    
+    .header input[type="text"] {
+        padding: .66px;
+        width: 50vw;
+        margin-right: 1.3vw;
+        font-family: 'Fragment Mono', monospace;
+        font-size: 1.4vw;
+    }
+    
+    #Filter {
+
+        background-color: transparent;
+        font-size: 1.3vw;
+
+        padding: .66vw;
+        color: #efefef;
+        border: none;
+        cursor: pointer;
+    
+    }
+    
+    #Filter:hover {
+        background-color:rgb(24, 112, 201);
+        
+    }
+    
+    #Login, #Profile {font-size: 1.3vw;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 0.4vw;
+        background-color: dodgerblue;
+        color: white;
+        cursor:pointer;
+    }
+    
+    #Login:hover, #Profile:hover {background-color:rgb(24, 112, 201);
+    }
+    
+    
+
+    
+
+/* footer */
+    footer {background-color: rgb(30, 144, 255); 
+        text-align: center; 
+        vertical-align: bottom; 
+        font-size: 25px; 
+        position: static;
+        width: 101.2%; 
+        margin-left: -10px;
+        margin-bottom: -10px; 
+        padding-top: 1px; 
+        padding-bottom: 1px;
+    }
+
+
+/* scrollbar */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background: #888; 
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
+    
+    
+    
+/* trending movies */
+    h4 {float: right;}
+    
+    .movielist {
+        display: flex; 
+        flex-wrap: wrap;
+        gap: 3vw;
+        }
+    .movies {
+          flex: 0 1 auto; /* Adjust width for 5 items per row */          
+          order: 0;
+          width: auto;
+          height: 360px; /* Set a fixed height for consistency */
+          justify-content: center;
+          margin-left: 0px;
+        }
+        
+    .movies img {
+          width: auto; /* Make the image scale to the width of its parent */
+          height: 360px; /* Ensure the image fully fills the parent height */
+          object-fit: contain; /* Crop the image to maintain aspect ratio */
+          display: block;
+          border-radius:0.4vw;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+          
+        }
+
+        .movies img:hover  {
+            transform: scale(1.05); 
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); 
+        }
+    
+    
+    .prev,
+    .next {
+    cursor: pointer;
+    position: absolute;
+    vertical-align: middle;
+    margin-top:9%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    background-color: rgba(30, 144, 255,0.6);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 3px;
+    user-select: none;
+    -webkit-user-select: none;
+    }
+    
+    .next {
+    right: 0;
+    }
+    
+    .prev {
+    left: 0;
+    }
+    
+    .prev:hover,
+    .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+
+
+/* reviews */
+    .reviews {
+        margin: 20px 0;
+        width: 59.1vw; 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 50px; 
+        justify-content: center;
+    }
+
+    .review {
+        background-color: #ffffff; 
+        padding: 15px;
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px #0000001A; 
+        border: 1px solid #ddd; 
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        width: 100%;
+    }
+    
+    .review:hover {
+        transform: scale(1.03); /* Slightly enlarge the box on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    }
+    .reviews p{
+        margin: 20px 0;
+            width: 59.1vw; 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 50px; 
+            justify-content: center;
+
+
+    }
+    
+
+
+
+
+
+   
+   
+   /* Hamburger menu */
+   .move {
+    animation-name: move;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    }
+
+    .unmove {
+    animation-name: unmove;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    }
+
+    @keyframes move {
+    0% {
+        transform: translateY(-50%);
+        opacity:0;
+    }
+    
+    
+    100% {
+        transform: translateY(100%);
+        opacity: 1;
+        height: 100%;
+        pointer-events: auto;
+    }
+    }
+
+    @keyframes unmove {
+    0% {
+    opacity: 1;
+    height: 100%;
+    transform: translateY(100%);
+    pointer-events: none;
+    }
+
+    100% {
+    transform: translateY(-50%);
+    opacity:0;
+    }
+    }
+
+    #Menu{
+    opacity:0;
+    pointer-events: none;
+    font-size: 1.3vw;
+    padding: .8vw 1.3vw ;
+    border: .1vw solid transparent;
+    color: white;
+    cursor:pointer;
+
+    
+    }
+
+    #Menu button{
+        
+        font-size: 16px;
+        color: white;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 7px;
+        background-color: dodgerblue;
+        cursor:pointer;
+        width: 100%; /* Set a fixed width */
+        box-sizing: border-box; /* Include padding and borders in the width */
+        text-align: center; /* Align text in the center */
+  
+    }
+
+    #MenuButton button{
+
+        font-size: 1.3vw;
+        color: white;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 0.5vw;
+        background-color: dodgerblue;
+        cursor:pointer;
+        text-align: center;
+        position:relative;
+        left:2vw;
+        }
+    
+    #MenuButton:hover {background-color:rgb(24, 112, 201);
+    }
+
+
+
+/* Movie info (page) */
+    .movieicon{
+        height: 360px;
+        width:auto;
+        margin-top: 25px;
+        margin-left: 50px;
+        margin-bottom:20px;
+        border-width: 0px; 
+        border-radius: 5px;
+
+    }
+    .moviename{
+        font-weight: bold; 
+        font-size: 40px;
+        margin-top: 25px;
+        
+    }
+    #likebutton{
+        right:100px;
+        font-weight: bold; 
+        font-size: 30px;
+        margin-top: 25px;
+        border-radius: 15px; 
+        border-width: 5px;
+        padding: 6px 0px 6px 0px;
+        background-color: #FF66CC;
+        cursor:pointer;
+        width:150px;
+        height:50px;
+        text-align: center; 
+   }
+    #likebutton.liked{
+        background-color: #FF66AA;
+        width:150px;
+        text-align: center; 
+        color:white;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 5px;
+    }
+
+    .runtime, .releasedate{
+        margin-left: 50px;
+        font-weight: bold;
+
+
+
+    }
+
+
+
+/* Search page results */
+.movieresults{
+    background-color: #c5c5c5;
+    padding: 10px;
+    width: 95%;
+    margin:auto;
+
+
+
+}
+.movieresults img {
+    width: 200px; /* Make the image scale to the width of its parent */
+    height: auto; /* Ensure the image fully fills the parent height */
+    object-fit: contain; /* Crop the image to maintain aspect ratio */
+    float:left;
+    
+  }
+
+.movieinfo {
+    float:left;
+    margin-left:10px;
+
+}
+
+/* Profile page / settings page */
+
+.pfp {
+    width: 150px;            /* Set the width of the image */
+    height: 150px;           /* Set the height of the image to match width */
+    border-radius: 50%;      /* This makes the image round */
+    object-fit: cover;       /* This ensures the image covers the container and is cropped */
+    cursor: pointer;
+}
+.pfp:hover{
+    filter: brightness(80%);
+
+
+}
+
+
+
+#pfp{
+    display:none;
+
+
+
+}
