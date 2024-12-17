@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hongdua - Filter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+
+        body {
+            font-family: 'Fragment Mono', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start; 
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .banner {
+            background-color: #910C0C;
+            color: white;
+            width: 100%;
+            height: 8.33vh; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            transition: top 0.3s; 
+            z-index: 3; 
+        }
+
+        .banner button {
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Hanuman', monospace;
+            font-size: 25px;
+            flex-shrink: 0;
+            font-weight: normal;
+        }
+
+        .banner .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            max-width: 50%; 
+            box-sizing: border-box;
+            margin: 0 10px;
+        }
+
+        .banner input[type="text"] {
+            padding: 10px;
+            width: 50%;
+            border: none;
+            border-radius: 10px;
+            margin-right: 20px;
+            font-family: 'Fragment Mono', monospace;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .banner .filter-btn {
+            padding: 10px;
+            background-color: transparent;
+            color: #efefef;
+            border: none;
+            cursor: pointer;
+            font-style: italic;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+            margin-top: 8.33vh;
+        }
+
+        .sidebar {
+            width: 20%;
+            height: calc(100vh - 8.33vh);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-sizing: border-box;
+        }
+        
+        .sidebar h1 {
+            text-decoration: none;
+            color: #910C0C;
+            padding: 30px;
+            font-size: 35px;
+            font-weight: normal;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar form {
+            margin: 0 100px;
+            font-size: 30px;
+            color: #808080;
+        }
+
+        .sidebar form label {
+            vertical-align: middle;
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .sidebar input[type="checkbox"] {
+            -webkit-appearance: none; 
+            -moz-appearance: none;    
+            appearance: none;       
+    
+            width: 20px;  
+            height: 20px; 
+            border: 3px solid #d9d9d9; 
+            border-radius: 5px; 
+            background-color: #d9d9d9; 
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+            margin: 20px 30px;
+            transition: background-color 0.2s ease, border-color 0.3s ease; 
+        }
+
+        .sidebar input[type="checkbox"]:checked {
+            background-color: #fafafa;  
+        }
+
+        .sidebar input[type="checkbox"]:hover {
+            background-color: #808080; 
+        }
+
+        .sidebar input[type="checkbox"]:checked:hover {
+            background-color: #fafafa; 
+        }
+        
+        .border {
+            width: 5px;
+            height: 100%;
+            background-color: #d9d9d9;
+            border-radius: 5px;
+            margin: 20px 0;
+            transition: all 0.3s ease-in-out; 
+        }
+
+        .content {
+            width: 80%;
+            height: 100%;
+            padding: 5px;
+            margin: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: #f1f1f1;
+        }
+ 
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .movie-container {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: flex-start;
+            width: calc(100% - 420px);
+        }
+
+        .movie {
+            width: 600px;
+            box-sizing: border-box;
+            background-color: #d9d9d9;
+            border-radius: 8px;  
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;  
+        }
+
+        .movie:hover {
+            transform: translateY(-10px);  
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);  
+        }
+
+        .movie img {
+            width: 100%;
+            height: 337.5px;
+            object-fit: cover;  
+            object-position: center;
+        }
+
+        .movie-title {
+            margin-top: 10px;
+            margin-bottom: px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .movie-genres {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            color: #555;
+        }
+        
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="banner">
+            <a href="home.html">
+                <button>MovieReviews</button>
+            </a>
+            <div class="search-container">
+                <input type="text" placeholder="Search titles...">
+                <a href="filter.html">
+                    <button class="filter-btn">Filters</button>
+                </a>
+            </div>
+            <a href="account.html">
+                <button>Settings</button>
+            </a>
+        </div>
+
+        <div class="container">
+             
+            <div class="sidebar">
+
+                <h1>Genres</h1>
+
+                <form action="/Filter" method="post">
+                    <label for="action">
+                        <input type="checkbox" name="filter" value="action"> Action
+                    </label><br>
+                    <label for="comedy">
+                        <input type="checkbox" name="filter" value="comedy"> Comedy
+                    </label><br>
+                    <label for="drama">
+                        <input type="checkbox" name="filter" value="drama"> Drama
+                    </label><br>
+                    <label for="horror">
+                        <input type="checkbox" name="filter" value="horror"> Horror
+                    </label><br>
+                    <label for="adventure">
+                        <input type="checkbox" name="filter" value="adventure"> Adventure
+                    </label><br>
+                    <label for="romance">
+                        <input type="checkbox" name="filter" value="romance"> Romance
+                    </label><br>
+                    <label for="sci-fi">
+                        <input type="checkbox" name="filter" value="sci-fi"> Sci-Fi
+                    </label><br>
+                    <label for="thriller">
+                        <input type="checkbox" name="filter" value="thriller"> Thriller
+                    </label><br>
+                    <label for="animation">
+                        <input type="checkbox" name="filter" value="animation"> Animation
+                    </label><br>
+                    <label for="animation">
+                        <input type="checkbox" name="filter" value="crime"> Crime
+                    </label><br>
+                </form>
+                
+            </div>
+
+            <div class="border"></div>
+
+
+            <div class="content">
+
+                <div class="movie-container" id="movieContainer">
+
+                    <div class="movie" data-genre="action,adventure">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/f0535dd61f56bddd6ee7f3bfb765645e45d78f373418ae37ee5103cf6eebbff0.jpg">
+                        <div class="movie-title">Avatar: The Way of Water</div>
+                        <div class="movie-genres">Genre: Action, Adventure</div>
+                    </div>
+                
+                    <div class="movie" data-genre="action,sci-fi">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/ae8093e4439b66320d3cc1f1fb96fa414530202ee4b21cc00a08d6b66de541d6.jpg">
+                        <div class="movie-title">Avengers: Endgame</div>
+                        <div class="movie-genres">Genre: Action, Sci-Fi</div>
+                    </div>
+                
+                    <div class="movie" data-genre="drama,comedy">
+                        <img src="https://m.media-amazon.com/images/I/91++WV6FP4L._AC_SY741_.jpg">
+                        <div class="movie-title">Forrest Gump</div>
+                        <div class="movie-genres">Genre: Drama, Comedy</div>
+                    </div>
+                
+                    <div class="movie" data-genre="drama,romance">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/660b8ffa60bb733ac8753397e0056f608c1c4c0a75ec5d5af9491e94b924624e.jpg">
+                        <div class="movie-title">The Notebook</div>
+                        <div class="movie-genres">Genre: Drama, Romance</div>
+                    </div>
+                
+                    <div class="movie" data-genre="comedy,romance">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/f45c926d73c8773ab2d71c20cd468fa8b730460e84921189964075c3c32fe167.jpg">
+                        <div class="movie-title">Crazy, Stupid, Love</div>
+                        <div class="movie-genres">Genre: Comedy, Romance</div>
+                    </div>
+                
+                    <div class="movie" data-genre="sci-fi,thriller">
+                        <img src="https://m.media-amazon.com/images/I/61CkZlbKdwL._AC_UF1000,1000_QL80_.jpg">
+                        <div class="movie-title">Inception</div>
+                        <div class="movie-genres">Genre: Sci-Fi, Thriller</div>
+                    </div>
+                
+                    <div class="movie" data-genre="horror,thriller">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/7f199ee2a285620c61f2c38846994bff0cabc52bfa39b1bb313d0f58be7a3658.jpg">
+                        <div class="movie-title">Get Out</div>
+                        <div class="movie-genres">Genre: Horror, Thriller</div>
+                    </div>
+                
+                    <div class="movie" data-genre="animation,adventure">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/3bee7714286b145b2c79cf0318d17b0bee2aaa342c688a10718286e53b24a599.jpg">
+                        <div class="movie-title">Spider-Man: Across the Spider-Verse</div>
+                        <div class="movie-genres">Genre: Animation, Adventure</div>
+                    </div>
+                
+                    <div class="movie" data-genre="action,sci-fi">
+                        <img src="https://m.media-amazon.com/images/S/pv-target-images/4a48991096eef46e47ecb17a0a677c46d7d7607aedaec7b67447645bee668816.jpg">
+                        <div class="movie-title">Star Wars: Episode IV - A New Hope</div>
+                        <div class="movie-genres">Genre: Action, Sci-Fi</div>
+                    </div>
+                
+                    <div class="movie" data-genre="drama,crime">
+                        <img src="https://m.media-amazon.com/images/I/71b6IS-+mZL._AC_UF1000,1000_QL80_.jpg">
+                        <div class="movie-title">The Godfather</div>
+                        <div class="movie-genres">Genre: Drama, Crime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const checkboxes = document.querySelectorAll('.sidebar form input[type="checkbox"]'); 
+            const movieContainer = document.getElementById('movieContainer');
+            const movies = movieContainer.getElementsByClassName('movie');
+        
+            function movieFilter() {
+                const selectedGenres = [];
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        selectedGenres.push(checkbox.value);
+                    }
+                });
+        
+                for (let i = 0; i < movies.length; i++) {
+                    const movie = movies[i];
+                    const movieGenres = movie.getAttribute('data-genre').split(',');
+                    const matchGenres = selectedGenres.every(genre => movieGenres.includes(genre));
+        
+                    if (selectedGenres.length === 0 || matchGenres) {
+                        movie.style.display = 'block';
+                    } else {
+
+                        movie.style.display = 'none';
+                    }
+                }
+            }
+        
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', movieFilter);
+            });
+
+        </script>
+
+    </body>
+
+</html>

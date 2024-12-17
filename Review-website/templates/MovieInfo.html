@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+
+
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+        
+<div class="container">
+    <img src="{{url_for('static', filename='images/' + movie.movielink)}}" class="movieicon">
+    <div movie_info>
+        <div class="moviename"> {{movie.moviename}} </div> 
+        <br>
+        <div class="movie_info">Genres: <div class="genres">{% for movie_genre in movie_genres %}<div class="{{movie_genre.genre}}">{{movie_genre.genre}}</div>{% endfor %} </div></div><br>
+        <div class="movie_info">Release date: {{movie.releasedate}} </div><br>
+        <div class="movie_info">Movie duration: {{movie.runtime}} </div><br>
+    </div>
+</div>     
+    
+
+
+
+
+
+
+<h1>Add a review:</h1>
+
+
+<form action="/Movies" method="POST" name ="review" id="rating"> 
+    <span><p>Rating:</p></span>
+    <input type="radio" id="rating1" name="rating" value="1">
+    <label for="rating1">1</label>
+
+    <input type="radio" id="rating2" name="rating" value="2">
+    <label for="rating2">2</label>
+
+    <input type="radio" id="rating3" name="rating" value="3">
+    <label for="rating3">3</label>
+
+    <input type="radio" id="rating4" name="rating" value="4">
+    <label for="rating4">4</label>
+
+    <input type="radio" id="rating5" name="rating" value="5">
+    <label for="rating5">5</label><br>
+
+    <span><p>Review:</p></span>
+
+    <input type="text" id="review" name="review" placeholder="review"> <br>
+    <input type="hidden" id="moviename" name="moviename" value="{{ movie.moviename}}">
+    <br>
+    <button type="submit" id="submit">Submit review</button>  
+</form>  
+
+
+<p>{{success}} {{error}} </p>
+
+
+
+
+
+
+<h1>Reviews</h1>
+    <form action="/Movies" method="post">
+        <input type="hidden" name="moviename" value="{{movie.moviename}}">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort">
+            <option value="popular" {% if sort == 'popular' %} selected {% else %}{% endif %}>Popular</option>
+            <option value="recent" {% if sort == 'recent': %} selected {% else %}{% endif %}>Recent</option>
+        </select>
+        <button type="submit" id="submit">Sort</button>  
+
+    </form>
+
+    {% if reviews %}
+        {% for review in reviews %}
+            
+            
+
+        <div class="reviews">
+            <form action="/Review" method="post"><input type="hidden" name="review_id" value="{{review.review_id}}">
+
+
+            <button class="review" type="submit" >
+
+                <p>Movie: {{ review.moviename }}</p>
+                <p>{% if review.rating == 1%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                
+                    {% elif review.rating == 2%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                                    
+                    {% elif review.rating == 3%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+        
+                    {% elif review.rating == 4%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    
+                    {% elif review.rating == 5%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+
+                    {% elif review.rating == 0%}
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+
+
+                {% else %}
+                    Rating: {{ review.rating }}
+                {% endif %}
+
+                </p>
+                <p>"{{ review.review }}"</p>
+                <p> - {{ review.username }}</p>
+                <p>Likes: {{ review.likes }}</p>   
+                <p>{{ review.time_ago }}</p>
+
+                
+    
+            </button></form> 
+        </div>
+            <br>
+
+
+        {% endfor %}
+    {% else %}
+        <h1> No reviews yet. Be the first to review!</h1>
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

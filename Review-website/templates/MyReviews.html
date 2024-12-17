@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+
+
+<h1>{{ username }}'s Reviews</h1>
+    {% if reviews %}
+        {% for review in reviews %}
+             
+            
+
+        <div class="reviews">
+            <form action="/Review" method="post"><input type="hidden" name="review_id" value="{{review.review_id}}">
+
+
+            <button class="review" type="submit" >
+
+                <p>Movie: {{ review.moviename }}</p>
+                <p>{% if review.rating == 1%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                
+                    {% elif review.rating == 2%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                                    
+                    {% elif review.rating == 3%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+        
+                    {% elif review.rating == 4%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    
+                    {% elif review.rating == 5%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+
+                    {% elif review.rating == 0%}
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+
+
+                {% else %}
+                    Rating: {{ review.rating }}
+                {% endif %}
+
+                </p>
+                <p>"{{ review.review }}"</p>
+                <p> - {{ review.username }}</p>
+                <p>Likes: {{ review.likes }}</p>   
+                <p>{{ review.time_ago }}</p>
+
+                
+    
+            </button></form> 
+        </div>
+            <br>
+
+        {% endfor %}
+    {% else %}
+        <h1>{{error}}</h1>
+    {% endif %}
+
+
+
+{% endblock %}

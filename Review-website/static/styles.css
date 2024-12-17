@@ -1,0 +1,733 @@
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+
+
+.checked {
+    color: orange;
+  }
+* {
+    box-sizing: border-box;
+    } 
+    body {
+        font-family: 'Fragment Mono', monospace;
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        
+    }
+    
+    a{
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    
+   
+/* pwa */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #Home {
+        font-size: 4vw;
+    }
+
+    #Input, #Login, #Profile {
+        font-size: 4vw;
+        width: 90%;
+        margin: 5px 0;
+    }
+
+    .carousel {
+        height: 50vw;
+    }
+
+    .carousel-item img {
+        height: 50vw;
+    }
+
+    footer {
+        font-size: 16px;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .header {
+        padding: 10px;
+    }
+
+    #Home {
+        font-size: 3vw;
+    }
+
+    #Input {
+        width: 70%;
+    }
+
+    .carousel {
+        height: 40vw;
+    }
+
+    .carousel-item img {
+        height: 40vw;
+    }
+}
+
+/* Large Devices (Default) */
+@media (min-width: 1025px) {
+    .carousel-container {
+        width: 70vw;
+    }
+
+    .carousel {
+        height: 27vw;
+    }
+}
+
+
+/* Spotlight */
+
+    #Spotlight {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #Spotlight span {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    
+    .carousel-container {
+        width: 80vw; /* Take up 60% of the screen width */
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .carousel {
+        display: flex;
+        width: 500%;
+        transition: transform 0.5s ease;
+        height: 27vw;
+        overflow:hidden;
+    }
+    
+    .carousel-item {
+        width: 20%; /* Since we have 5 images */
+        flex-shrink: 0;
+    }
+    
+    .carousel-item img {
+        width: 100%;
+        height: 27vw; /* Adjust the height as necessary */
+        object-fit: cover;
+    }
+    
+    /* Navigation buttons */
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        font-size: 2rem;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        transform: translateY(-50%);
+    }
+    
+    .left-btn {
+        left: 10px;
+    }
+    
+    .right-btn {
+        right: 10px;
+    }
+    
+    .carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+
+/* Header */
+
+    .header {
+        background-color: #910C0C;
+            color: white;
+            width: 100%;
+            height: 5vw; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index:1;
+    }
+
+    #Home {background-color: transparent;
+        color: #efefef;
+        border: none;
+        padding: .66vw;
+        cursor: pointer;
+        font-family: 'Fragment Mono', monospace;
+        font-size: 2vw;
+        flex-shrink: 0;
+        font-weight: normal;
+    }
+    
+    #Home:hover {background-color: #922222;
+    }
+
+    
+    #Input {
+        margin-left:1vw;
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 50vw;
+        font-size: 1.1vw;
+        padding: .8vw 1.3vw ;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+    
+    .header input[type="text"] {
+        padding: .66px;
+        width: 50vw;
+        margin-right: 1.3vw;
+        font-family: 'Fragment Mono', monospace;
+        font-size: 1.4vw;
+    }
+    
+    #Filter {
+
+        background-color: transparent;
+        font-size: 1.3vw;
+
+        padding: .66vw;
+        color: #efefef;
+        border: none;
+        cursor: pointer;
+    
+    }
+    
+    #Filter:hover {
+        background-color: #922222;        
+    }
+    
+    #Login{
+        font-size: 1.3vw;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 0.4vw;
+        background-color: #910C0C;
+        color: white;
+        cursor:pointer;
+        position:relative;
+        left: 22.5vw;
+    } 
+    
+    #Profile {
+        font-size: 1.3vw;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 0.4vw;
+        background-color: #910C0C;
+        color: white;
+        cursor:pointer;
+        position:relative;
+        left: 11vw;
+    }
+    
+    #Login:hover, #Profile:hover {
+        background-color: #922222;
+    }
+    
+    
+
+    
+
+/* footer */
+    footer {background-color: rgb(30, 144, 255); 
+        text-align: center; 
+        vertical-align: bottom; 
+        font-size: 25px; 
+        position: static;
+        width: 101.2%; 
+        margin-left: -10px;
+        margin-bottom: -10px; 
+        padding-top: 1px; 
+        padding-bottom: 1px;
+    }
+
+
+/* scrollbar */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background: #888; 
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
+    
+    
+    
+/* trending movies */
+    h4 {float: right;}
+    
+    .movielist {
+        display: flex; 
+        flex-wrap: wrap;
+        gap: 3vw;
+        }
+    .movies {
+          flex: 0 1 auto; /* Adjust width for 5 items per row */          
+          order: 0;
+          width: auto;
+          height: 360px; /* Set a fixed height for consistency */
+          justify-content: center;
+          margin-left: 0px;
+        }
+        
+    .movies img {
+          width: auto; /* Make the image scale to the width of its parent */
+          height: 360px; /* Ensure the image fully fills the parent height */
+          object-fit: contain; /* Crop the image to maintain aspect ratio */
+          display: block;
+          border-radius:0.4vw;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+          
+        }
+
+        .movies img:hover  {
+            transform: scale(1.05); 
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); 
+        }
+    
+    
+    .prev,
+    .next {
+    cursor: pointer;
+    position: absolute;
+    vertical-align: middle;
+    margin-top:9%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    background-color: rgba(30, 144, 255,0.6);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 3px;
+    user-select: none;
+    -webkit-user-select: none;
+    }
+    
+    .next {
+    right: 0;
+    }
+    
+    .prev {
+    left: 0;
+    }
+    
+    .prev:hover,
+    .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+
+
+/* reviews */
+    .reviews {
+        margin: 20px 0;
+        width: 59.1vw; 
+        gap: 20px 50px; 
+        justify-content: center;
+    }
+
+    .review {
+        background-color: #ffffff; 
+        padding: 15px;
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px #0000001A; 
+        border: 1px solid #ddd; 
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        width: 100%;
+        font-size:1vw;
+    }
+    
+    .review:hover {
+        transform: scale(1.03); /* Slightly enlarge the box on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    }
+
+    .review p:first-child {
+        font-weight: bold; /* Bold Movie title */
+    }
+
+    .review p:nth-child(3) {
+        font-style: italic; /* Italic style for the review text */
+    }
+    
+    .review p:nth-child(5) {
+        text-align:right;
+    }
+
+    .review p:last-child {
+        text-align:right;
+    }
+
+
+
+   
+   
+   /* Hamburger menu */
+   .move {
+    animation-name: move;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    }
+
+    .unmove {
+    animation-name: unmove;
+    animation-duration: 0.6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    }
+
+    @keyframes move {
+    0% {
+        transform: translateY(-50%);
+        opacity:0;
+    }
+    
+    
+    100% {
+        transform: translateY(100%);
+        opacity: 1;
+        height: 100%;
+        pointer-events: auto;
+    }
+    }
+
+    @keyframes unmove {
+    0% {
+    opacity: 1;
+    height: 100%;
+    transform: translateY(100%);
+    pointer-events: none;
+    }
+
+    75%{
+        opacity:0;
+    }
+    100% {
+    transform: translateY(-50%);
+    opacity:0;
+    }
+    }
+
+    #Menu{
+    opacity:0;
+    pointer-events: none;
+    font-size: 1.3vw;
+    padding: .8vw 1.3vw ;
+    border: .1vw solid transparent;
+    color: white;
+    cursor:pointer;
+    position:relative; 
+    left:2.5vw;
+    }
+                    
+    #Menu button{ /* items inside the dropdown */
+        font-size: 1.3vw;
+        color: white;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 0.5vw;
+        background-color: #910C0C;
+        cursor:pointer;
+        width: 100%; /* Set a fixed width */
+        text-align: center; /* Align text in the center */
+  
+    }
+
+    #MenuButton button{/* the "menu" button */
+        font-size: 1.3vw;
+        color: white;
+        padding: .8vw 1.3vw ;
+        border: .1vw solid transparent;
+        border-radius: 0.5vw;
+        background-color: #910C0C;
+        cursor:pointer;
+        text-align: center;
+        position:relative; 
+        left:13vw
+
+        }
+    
+    #MenuButton button:hover {
+        background-color: #922222;    }
+    #Menu button:hover{
+        background-color: #922222;
+    }
+
+
+
+/* Movie info (page) */
+    .movieicon{
+        height: auto;
+        width:300px;
+        margin-bottom:20px;
+        border-width: 0px; 
+        border-radius: 5px;
+
+    }
+    .moviename{
+        font-weight: bold; 
+        font-size: 40px;
+        width:20vw;
+        
+    }
+    #likebutton{
+        font-weight: bold; 
+        font-size: 30px;
+        border-radius: 15px; 
+        border-width: 5px;
+        padding: 6px 0px 6px 0px;
+        background-color: #FF66CC;
+        cursor:pointer;
+        width:150px;
+        height:50px;
+        text-align: center; 
+   }
+    #likebutton.liked{
+        background-color: #FF66AA;
+        width:150px;
+        text-align: center; 
+        color:white;
+    }
+
+    .container {
+        position:relative;
+        right:11vw;
+        padding-top: 2vw;
+        display: flex;
+        justify-content: space-between;
+        gap:3vw;
+    }
+
+
+    .movie_info{
+        font-weight: bold;
+        display:flex;
+        align-items:center;
+
+    }
+
+    .genres{
+        display:flex;
+        justify-content: space-between;
+        gap:0.66vw;
+
+
+    }
+    .Action { background-color: #FF5733; border-radius: 1vw; padding: 0.2vw; }
+    .Adventure { background-color: #F4A261; border-radius: 1vw; padding: 0.2vw; }
+    .Animation { background-color: #F9C74F; color: #333; border-radius: 1vw; padding: 0.2vw; }
+    .Biography { background-color: #6D6875; border-radius: 1vw; padding: 0.2vw; }
+    .Comedy { background-color: #FFD166; color: #333; border-radius: 1vw; padding: 0.2vw; }
+    .Crime { background-color: #515151; border-radius: 1vw; padding: 0.2vw; }
+    .Drama { background-color: #B56576; border-radius: 1vw; padding: 0.2vw; }
+    .Family { background-color: #8AC926; color: #333; border-radius: 1vw; padding: 0.2vw; }
+    .Fantasy { background-color: #6A4C93; border-radius: 1vw; padding: 0.2vw; }
+    .Film-noir { background-color: #1B1B1E; border-radius: 1vw; padding: 0.2vw; }
+    .History { background-color: #B08968; border-radius: 1vw; padding: 0.2vw; }
+    .Horror { background-color: #900C3F; border-radius: 1vw; padding: 0.2vw; }
+    .Music { background-color: #6DD3CE; color: #333; border-radius: 1vw; padding: 0.2vw; }
+    .Mystery { background-color: #4C5C68; border-radius: 1vw; padding: 0.2vw; }
+    .Romance { background-color: #FF6F61; border-radius: 1vw; padding: 0.2vw; }
+    .Sci-Fi { background-color: #48CAE4; border-radius: 1vw; padding: 0.2vw; }
+    .Thriller { background-color: #C70039; border-radius: 1vw; padding: 0.2vw; }
+    .War { background-color: #6C757D; border-radius: 1vw; padding: 0.2vw; }
+    .Western { background-color: #D4A373; color: #333; border-radius: 1vw; padding: 0.2vw; }
+   
+    #review {/* review box */
+        margin-left:1vw;
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 50vw;
+        font-size: 1.1vw;
+        padding: .8vw 1.3vw ;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+    
+
+
+/* Search page results */
+.movieresults{
+    width: 70vw;
+        box-sizing: border-box;
+        background-color: #d9d9d9;
+        border-radius: 8px;  
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; }
+
+
+
+.movieresults:hover {
+    transform: translateY(-5px);  
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);  
+}
+
+.movieresults img {
+    width: 200px; /* Make the image scale to the width of its parent */
+    height: auto; /* Ensure the image fully fills the parent height */
+    object-fit: contain; /* Crop the image to maintain aspect ratio */
+    float:left;
+    
+  }
+
+.movieinfo {
+    float:left;
+    text-align:left;
+    margin-left:10px;
+    font-family: 'Fragment Mono', monospace;
+
+}
+
+
+/* pfp */
+.pfp {
+    width: 150px;            /* Set the width of the image */
+    height: 150px;           /* Set the height of the image to match width */
+    border-radius: 50%;      /* This makes the image round */
+    object-fit: cover;       /* This ensures the image covers the container and is cropped */
+
+
+
+}
+
+.pfpset {
+    width: 150px;            /* Set the width of the image */
+    height: 150px;           /* Set the height of the image to match width */
+    border-radius: 50%;      /* This makes the image round */
+    object-fit: cover;       /* This ensures the image covers the container and is cropped */
+    cursor: pointer;
+}
+
+.pfpset:hover{
+    filter: brightness(80%);
+
+
+}
+
+
+
+/* Profile page / settings page */
+.profilecontainer {
+    position:relative;
+    right:11vw;
+    padding-top: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:3vw;
+}
+
+
+/* filters page */
+
+.content {
+    width: 80%;
+    height: 100%;
+    padding: 5px;
+    margin: 20px 40px;
+    box-sizing: border-box;
+}
+
+.resultscontainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin-top: 8.33vh;
+}
+.sidebar{
+    width:200px;
+
+    
+}
+
+.filter{
+    background-color: #c4c4c4;
+    border-color: transparent;
+    border-radius: 5px;
+    font-size:20px;
+    padding:5px;
+    cursor: pointer;
+}
+
+.filter:hover{
+    background-color: #999999;
+
+
+
+}
+
+
+
+
+
+
+/* review page */
+
+.reviewpagereview{
+    font-size:20px;
+    width:90%;
+    margin-top:10px;
+
+}
+
+.reviewinfo {
+    background-color: #ffffff; 
+    padding: 15px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px #0000001A; 
+    border: 1px solid #ddd; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    width: 70vw;
+    font-size:1vw;
+    padding-left:30px;
+    padding-bottom:20px;
+    
+}
+
+.likes{
+    text-align: right;
+    font-size:1.5vw
+
+}

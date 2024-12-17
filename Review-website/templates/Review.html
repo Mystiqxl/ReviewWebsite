@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block head %}
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+
+
+    {% if review_info %}
+        
+
+        <div class="reviewinfo">
+                <h1>{{review_info.moviename}}</h1>
+                <form action="/Movies" method="post">
+                    <input type="hidden" name="moviename" value="{{review_info.moviename}}">Movie:<button type="submit">{{review_info.moviename}}</button>
+                </form>
+
+                <form action="/Profile" method="post">
+                    <input type="hidden" name="username" value="{{review_info.username}}">Author:<button type="submit">{{review_info.username}}</button>
+                </form>
+
+                    
+                <p>Date published: {{review_info.reviewdate}}</p>
+                
+                
+                
+                {% if review_info.rating == 1%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                
+                    {% elif review_info.rating == 2%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                                    
+                    {% elif review_info.rating == 3%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+        
+                    {% elif review_info.rating == 4%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    
+                    {% elif review_info.rating == 5%}
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+
+                    {% elif review_info.rating == 0%}
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    
+                    {% endif %}
+                    
+                <div class="reviewpagereview">{{review_info.review}}</div>
+                <div class="likes">Likes: {{review_info.likes}}</div>
+        </div>
+
+
+
+        {% else %}
+            <h3>no review</h3>
+            <h3>{{ error }}</h3>
+
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

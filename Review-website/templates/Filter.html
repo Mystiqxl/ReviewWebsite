@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+<div class="resultscontainer">
+                
+    <div class="sidebar">
+
+
+    <form action="/Filter" method="post">
+        <input type="checkbox" name="filter" value="action" 
+            {% if 'action' in selected_filters %} checked{% endif %}> action <br>
+            <br>
+        <input type="checkbox" name="filter" value="adventure" 
+            {% if 'adventure' in selected_filters %}checked{% endif %}> adventure <br> 
+            <br>
+        <input type="checkbox" name="filter" value="animation" 
+            {% if 'animation' in selected_filters %}checked{% endif %}> animation <br>  
+            <br>
+        <input type="checkbox" name="filter" value="biography" 
+            {% if 'biography' in selected_filters %}checked{% endif %}> biography <br> 
+            <br>
+        <input type="checkbox" name="filter" value="comedy" 
+            {% if 'comedy' in selected_filters %}checked{% endif %}> comedy <br> 
+            <br> 
+        <input type="checkbox" name="filter" value="crime" 
+            {% if 'crime' in selected_filters %}checked{% endif %}> crime <br>
+            <br>  
+        <input type="checkbox" name="filter" value="drama" 
+            {% if 'drama' in selected_filters %}checked{% endif %}> drama <br> 
+            <br> 
+        <input type="checkbox" name="filter" value="family" 
+            {% if 'family' in selected_filters %}checked{% endif %}> family <br> 
+            <br> 
+        <input type="checkbox" name="filter" value="fantasy" 
+            {% if 'fantasy' in selected_filters %}checked{% endif %}> fantasy <br> 
+            <br> 
+        <input type="checkbox" name="filter" value="film-noir" 
+            {% if 'film-noir' in selected_filters %}checked{% endif %}> film-noir <br>  
+            <br>
+        <input type="checkbox" name="filter" value="history" 
+            {% if 'history' in selected_filters %}checked{% endif %}> history <br>  
+            <br>
+        <input type="checkbox" name="filter" value="horror" 
+            {% if 'horror' in selected_filters %}checked{% endif %}> horror <br>  
+            <br>
+        <input type="checkbox" name="filter" value="music" 
+            {% if 'music' in selected_filters %}checked{% endif %}> music <br>  
+            <br>
+        <input type="checkbox" name="filter" value="mystery" 
+            {% if 'mystery' in selected_filters %}checked{% endif %}> mystery <br> 
+            <br> 
+        <input type="checkbox" name="filter" value="romance" 
+            {% if 'romance' in selected_filters %}checked{% endif %}> romance <br> 
+            <br> 
+        <input type="checkbox" name="filter" value="sci-fi" 
+            {% if 'sci-fi' in selected_filters %}checked{% endif %}> sci-fi <br>  
+            <br>
+        <input type="checkbox" name="filter" value="thriller" 
+            {% if 'thriller' in selected_filters %}checked{% endif %}> thriller <br>  
+            <br>
+        <input type="checkbox" name="filter" value="war" 
+            {% if 'war' in selected_filters %}checked{% endif %}> war <br>  
+            <br>
+        <input type="checkbox" name="filter" value="western" 
+            {% if 'western' in selected_filters %}checked{% endif %}> western <br> 
+            <br>
+
+        <br>
+        <button type="submit" class="filter">Filter</button>
+        </form>
+    </div>
+    <div class="border"></div>
+
+
+
+
+
+
+
+
+    {% if results %}
+        <h1>Results: </h1>
+
+        <div class="content">
+
+            <div class="movie-container" id="movieContainer">
+
+        {% for result in results %}
+
+            <div class="movieresults"><form action="/Movies" method="post"><input type="hidden" name="moviename" value="{{result.moviename}}"><button type="submit" style="border: none; background: none; padding: 0px; ">
+
+                <img src="{{url_for('static', filename='images/' + result.movielink)}}" alt="{{result.moviename}}" style="cursor:pointer;"> 
+
+                <div class="movieinfo">
+                    <h1>{{result.moviename}}</h1>
+                    <p>Release date: {{result.releasedate}}</p>
+                    <p>Runtime: {{result.runtime}}</p>
+
+                </div>
+
+            </button></form></div>   
+            <br>
+        
+
+        {% endfor %}
+            </div>
+            </div>
+    {% else %}
+        <h3>{{ error }}</h3>
+
+    {% endif %}
+
+</div>
+{% endblock %}
