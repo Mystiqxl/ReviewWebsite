@@ -8,10 +8,15 @@
 6. Click 'server' on the top menu, followed by 'Data Import'
 7. Select "Import from Self-Contained file", then attach the file, and import (in the "import progress" tab)
 8. This website runs on python, so you will need to install the latest version of python
-9. Upon installation, make sure to add pip as path
-10. Open up the Review-website folder in vscode, and type cd [full path name] in the terminal at the bottom (e.g. cd c:\\Users\\kc610\\Downloads\\Review-website)
-11. Then type pip install requirements in that same terminal 
+  
 
+
+Run the PWA app in Visual studio code with a virtual environment (to not worry about dependencies) 
+To activate the virtual environment, insert .venv\Scripts\activate 
+
+If it does not work: 
+- try download the dependencies manually (as per requirements.txt) with pip install 
+- do cd [exact path] to enter cmds directly into that path
 
 
 
